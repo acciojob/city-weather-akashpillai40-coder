@@ -14,41 +14,40 @@ const App = () => {
   const fetchWeather = () => {
     if (!query.trim()) return;
 
-    setError(null);
+    setError("");
     setWeather(null);
 
      fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${query}&appid=${API_KEY}&units=metric`
     )
-      .then((res) =>{
-        if(!res.ok) throw new Error("Can't find Data!")
-        return res.json()
-      })
-      .then((data) =>{
-        setWeather(data)
-      })
-      .catch((err) => {
-        setError(err.message)
-      });
+    .then((res) => {
+      if(!res.ok) throw new Error("Couldn't found!");
+      //console.log(res)
+      return res.json()
+    })
+    .then((data) => {
+      setWeather(data)
+    })
+    .catch((err) => {
+      setError(err.message)
+    });
   };
-
+ console.log("Weather from API", weather)
   return (
     <div>
       <input
         className="search"
         type="text"
-        placeholder="Enter Location"
+        placeholder="Enter a city"
         value={query}
         onChange={(e) => setQuery(e.target.value)} //query = "London"
         onKeyDown={(e) => {
           if (e.key === "Enter") fetchWeather();
         }}
       />
-      {weather && (
-        <div className="weather">
-          <Weather data={weather} />
-        </div>
-      )}
+      {error && <p className="error" style={{ color: "red", marginTop: "10px" }}>{error}</p>}
+
+      {weather && <Weather data={weather} />}
     </div>
   );
 };

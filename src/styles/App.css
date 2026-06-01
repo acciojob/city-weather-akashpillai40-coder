@@ -1,7 +1,5 @@
 
-/* =========================================
-   1. GLOBAL RESET & BACKGROUND ARCHITECTURE
-   ============================================ */
+
 * {
   margin: 0;
   padding: 0;
@@ -19,9 +17,7 @@ body {
   padding: 20px;
 }
 
-/* ==========================================
-   2. MAIN CONTAINER & SEARCH LAYOUT
-   ===================================== */
+
 #root > div {
   width: 100%;
   max-width: 420px;
@@ -30,7 +26,7 @@ body {
   gap: 24px;
 }
 
-/* Glassmorphism Input Field Styling */
+
 .search {
   width: 100%;
   padding: 16px 24px;
