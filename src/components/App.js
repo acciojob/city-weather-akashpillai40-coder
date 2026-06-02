@@ -27,6 +27,8 @@ const App = () => {
     })
     .then((data) => {
       setWeather(data)
+      //clear input field
+      setQuery('')
     })
     .catch((err) => {
       setError(err.message)
